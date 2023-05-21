@@ -2,7 +2,7 @@ import time
 import pyttsx3
 
 bee = [
-    "A whole damn bee movie script (almost) v1",
+    "A whole damn bee movie script (almost) v1.1",
     "Made by Jakki",
     "-------------------------Just because I can-------------------------",
 ]
@@ -271,13 +271,37 @@ bee_movie_script = [
     "Hang on. Two left",
 ]
 
+the_end = [
+    "The end",
+    "Thanks 4 listening to bee movie script version 1.",
+    "There is a lot to be added.",
+]
+
+intro = [
+    "Hello, I will be your narrator through the whole script",
+    "Enjoy the bee movie script",
+]
+
 import os
 import sys
 
+PURP = "\033[95m"
+RESET = "\033[0m"
+Yellow = "\033[33m"
+
 def narrator(line):
     engine = pyttsx3.init()
+    engine.setProperty('rate', 300)
+    engine.setProperty('volume', 2)
     engine.say(line)
     engine.runAndWait()
+
+time.sleep(2)
+os.system("cls")
+for line in intro:
+    print(PURP + "[CREATOR] " + RESET + line)
+    narrator(line)
+    time.sleep(1)
 
 for line in bee:
     print(line)
@@ -285,6 +309,13 @@ for line in bee:
 time.sleep(4)
 os.system("cls")
 for line in bee_movie_script:
-    print("[BEE] " + line)
+    print(Yellow + "[BEE] " + RESET + line)
+    narrator(line)
+    time.sleep(0.1)
+
+time.sleep(3)
+os.system("cls")
+for line in the_end:
+    print("[CREATOR] " + line)
     narrator(line)
     time.sleep(1)
